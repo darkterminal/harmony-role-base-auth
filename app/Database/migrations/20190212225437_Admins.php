@@ -15,13 +15,9 @@ class Admins extends Migration
             $table->string('name');
             $table->string('email');
             $table->enum('role', [
-                'super', 
-                'admin_partner',
-                'admin_merchant',
-                'admin_marketing',
-                'admin_surveyor',
-                'admin_financial',
-                'admin_partner_officer'
+                'admin_super',
+                'admin_one',
+                'admin_two'
             ]);
             $table->string('password');
             $table->string('password_reset');
