@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ base_url() }}/assets/css/bootstrap.css">
+    <link rel="stylesheet" href="{{ base_url() }}/assets/css/fontawesome.min.css">
+    <link rel="stylesheet" href="{{ base_url() }}/assets/css/app.css">
+    <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One" rel="stylesheet">
+    <title>Homepage Authentication</title>
+  </head>
+  <body>
+    
+    <div class="form-container container my-5">
+    <div class="card">
+        <h4 class="card-header">Change Password</h4>
+            <div class="card-body">                
+
+                <form method="POST" action="{{ path_for('auth.password.change') }}" autocomplete="off">
+                    {{ csrf.field | raw }}
+                    <div class="form-group">
+                        <label for="old_password">Old Password</label>
+                        <input type="password" class="form-control {{ errors.password ? 'is-invalid' : '' }}" name="old_password" id="old_password" placeholder="Old Password">
+                        {% if errors.old_password %}
+                            <small id="passwordHelp" class="form-text text-danger">*{{ errors.old_password | first | replace({'_': ' '}) }}</small>
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control {{ errors.password ? 'is-invalid' : '' }}" name="password" id="password" placeholder="Password">
+                        {% if errors.password %}
+                            <small id="passwordHelp" class="form-text text-danger">*{{ errors.password | first }}</small>
+                        {% endif %}
+                    </div>
+                    <button type="submit" class="btn btn-primary">Change Password</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="{{ base_url() }}/assets/js/jquery.min.js"></script>
+    <script src="{{ base_url() }}/assets/js/popper.min.js"></script>
+    <script src="{{ base_url() }}/assets/js/bootstrap.min.js"></script>
+  </body>

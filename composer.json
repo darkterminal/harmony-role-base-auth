@@ -1,0 +1,55 @@
+{
+    "name": "harmony-betta/harmony",
+    "description": "The Harmony Framework.",
+    "keywords": ["framework", "harmony", "harmony framewrok"],
+    "license": "GPL-3.0-only",
+    "type": "project",
+    "version": "1.0.4",
+    "authors": [
+        {
+            "name": "Imam Ali Mustofa",
+            "email": "bettadevindonesia@gmail.com",
+            "homepage": "http://www.bettadevindonesia.com",
+            "role": "Founder & Developer Betta Dev Indonesia"
+        }
+    ],
+    "require": {
+        "php": "^5.5.9|>=7.0.8",
+        "slim/slim": "3.3.0",
+        "slim/twig-view": "2.1.1",
+        "illuminate/database": "^5.5",
+        "illuminate/events": "^5.5",
+        "respect/validation": "^1.1",
+        "slim/csrf": "^0.8.2",
+        "slim/flash": "^0.4.0",
+        "symfony/console": "^3.3",
+        "zeuxisoo/slim-whoops": "0.6.*",
+        "vlucas/phpdotenv": "^2.4",
+        "davedevelopment/phpmig": "~1",
+        "nette/mail": "^2.4",
+        "nesbot/carbon": "^1.22",
+        "phpmailer/phpmailer": "~6.0",
+        "symfony/filesystem": "^3.3",
+        "league/flysystem": "^1.0",
+        "psy/psysh": "^0.8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app"
+        },
+        "exclude-from-classmap": ["/app/Support/Commands/HelperCommands/Templates/"]
+    },
+    "config": {
+        "bin-dir": "bin/"
+    },
+    "scripts": {
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "removeMaster": "rm -rf harmony-master"
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^3.4",
+        "symfony/process": "^4.0"
+    }
+}

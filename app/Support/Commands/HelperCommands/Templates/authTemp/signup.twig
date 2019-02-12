@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ base_url() }}/assets/css/bootstrap.css">
+    <link rel="stylesheet" href="{{ base_url() }}/assets/css/fontawesome.min.css">
+    <link rel="stylesheet" href="{{ base_url() }}/assets/css/app.css">
+    <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One" rel="stylesheet">
+    <title>Homepage Authentication</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <div class="container">
+        <a class="navbar-brand" href="{{ path_for('home') }}">Harmony Framework</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{{ path_for('auth.signin') }}">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ path_for('auth.signup') }}">Register</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div style="height: 80vh;" class="d-flex align-items-center">
+      <div class="card mx-auto" style="width: 30em;">
+        <div class="card-header text-center">
+          Register Form
+        </div>
+        <div class="card-body">
+          <form action="{{ path_for('auth.signup') }}" method="POST">
+            {{ csrf.field | raw }}
+            <div class="form-group">
+              <label for="fullname">Fullname</label>
+              <input type="text" name="name" class="form-control form-control-sm {{ errors.name ? 'is-invalid' : '' }}" placeholder="Enter fullname">
+              {% if errors.name %}
+              <div class="invalid-feedback">
+                {{ errors.name | first }}
+              </div>
+              {% endif %}
+            </div>
+            <div class="form-group">
+              <label for="email">Email address</label>
+              <input type="email" name="email" class="form-control form-control-sm {{ errors.email ? 'is-invalid' : '' }}" placeholder="Enter email">
+              {% if errors.email %}
+              <div class="invalid-feedback">
+                {{ errors.email | first }}
+              </div>
+              {% endif %}
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" name="password" class="form-control form-control-sm {{ errors.password ? 'is-invalid' : '' }}" placeholder="Password">
+              {% if errors.password %}
+              <div class="invalid-feedback">
+                {{ errors.password | first }}
+              </div>
+              {% endif %}
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Register</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="{{ base_url() }}/assets/js/jquery.min.js"></script>
+    <script src="{{ base_url() }}/assets/js/popper.min.js"></script>
+    <script src="{{ base_url() }}/assets/js/bootstrap.min.js"></script>
+  </body>
+</html>

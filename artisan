@@ -1,0 +1,50 @@
+#!/usr/bin/env php
+<?php
+
+require 'vendor/autoload.php';
+
+$dotenv = new Dotenv\Dotenv(__DIR__);
+$dotenv->load();
+
+use App\Support\Commands\GeneratorController;
+use App\Support\Commands\GeneratorModel;
+use App\Support\Commands\GeneratorMiddleware;
+use App\Support\Commands\GeneratorAuth;
+use App\Support\Commands\GeneratorPasswordController;
+use App\Support\Commands\RouteLists;
+use App\Support\Commands\Tinker;
+use App\Support\Commands\Serve;
+use App\Support\Commands\GeneratorAuthScaffolding;
+use Symfony\Component\Console\Application;
+use Phpmig\Console\Command;
+
+$app = new Application('Harmony Framework | Created by Betta Dev Indonesia', 'v1.3');
+
+$phpmig_commands = [
+    new Command\CheckCommand(),
+    new Command\DownCommand(),
+    new Command\GenerateCommand(),
+    new Command\InitCommand(),
+    new Command\MigrateCommand(),
+    new Command\RedoCommand(),
+    new Command\RollbackCommand(),
+    new Command\StatusCommand(),
+    new Command\UpCommand(),
+];
+foreach ($phpmig_commands as $command) {
+    $command->setName('db:' . $command->getName());
+}
+
+$app->addCommands($phpmig_commands);
+
+$app->add(new GeneratorController());
+$app->add(new GeneratorModel());
+$app->add(new GeneratorMiddleware());
+$app->add(new GeneratorAuth());
+$app->add(new GeneratorPasswordController());
+$app->add(new GeneratorAuthScaffolding());
+$app->add(new RouteLists());
+$app->add(new Tinker());
+$app->add(new Serve());
+
+$app->run();
