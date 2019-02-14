@@ -1,5 +1,13 @@
 
-![Harmony Role Base Authentication](https://i.ibb.co/HrX7zyn/Untitled.png "Harmony Role Base Authentication")
+![Harmony Role Base Authentication](https://i.ibb.co/0YCJCYK/github-banner.png "Harmony Role Base Authentication")
+# Harmony Role Base Authentication
+
+## Pre-requirements
+- PHP7 or higher
+- Composer
+- NodeJS
+- Gupl CLI (Recomended)
+- MySQL
 
 ## Install
 
@@ -37,3 +45,4 @@ Step 6 :
 $ php artisan db:migrate
 $ gulp
 ```
+
